@@ -21,16 +21,11 @@ This movie is absolutely mind-blowing! The visual effects are incredible and the
 
 ## 📺 TV Shows
 
-### Breaking Bad
+### Andor
 **Type:** TV  
 **Hot:** true
 
-This show is absolutely mind-blowing! The character development is incredible and the story is so intense. Bryan Cranston is perfect as Walter White.
-
-### Stranger Things
-**Type:** TV  
-
-This show totally captures the 80s vibe! The kids are amazing actors and the supernatural elements are so cool. The soundtrack is absolutely perfect.
+Andor is a television rarity: It's determined, confident, and focused in a sprawling and often messy StarWars universe. It's characters are convincing, and together tell a tale of manufactured consent, class struggle, and overreach in a smart, and truly accessible way. The ending broke my heart.
 
 ---
 
