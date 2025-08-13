@@ -40,10 +40,11 @@ This game is amazing! The 3D graphics are mind-blowing and controlling Mario in 
 
 ## 📚 Books
 
-### Neuromancer
-**Type:** Book  
+### Saga
+**Type:** Book
+**Hot:** true
 
-William Gibson is a genius! This cyberpunk masterpiece predicted the internet before it even existed. The writing style is so cool and futuristic.
+A lavish Sci-Fi world with truly alien stages and extremely relatable characters. Read this to feel something.
 
 ---
 
