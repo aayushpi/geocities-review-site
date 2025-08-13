@@ -1,11 +1,3 @@
-# My Totally Rad Review Site! 🌟
-
-Welcome to my awesome review site where I share my thoughts on all the cool stuff I've been checking out!
-
----
-
-## 🎬 Films
-
 ### Weapons
 **Type:** Film  
 **Hot:** true
@@ -17,10 +9,6 @@ Welcome to my awesome review site where I share my thoughts on all the cool stuf
 ### Eddington
 **Type:** Film  
 
----
-
-## 📺 TV Shows
-
 ### Andor
 **Type:** TV  
 **Hot:** true
@@ -31,25 +19,12 @@ Andor is a television rarity: It's determined, confident, and focused in a spraw
 **Type:** TV  
 **Hot:** true
 
----
-
-## 🎮 Games
-
 ### Clair Obscura 33
 **Type:** Game  
 **Hot:** true
-
----
-
-## 📚 Books
 
 ### Saga
 **Type:** Book
 **Hot:** true
 
 A lavish Sci-Fi world with truly alien stages and extremely relatable characters. Read this to feel something.
-
----
-
-To add a new review, follow this format:
-
