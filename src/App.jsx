@@ -124,6 +124,14 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
             </div>
             <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wjRLEuQRNnGt7QpVdNhHJBkaIRdHRWH9pSUVhHigM71kwBMaE2QiQDQkAAA7" alt="spinning star" className="spinning-gif" />
           </div>
+          <div className="90s-buttons">
+            <button className="homepage-btn" onClick={() => window.open('https://aayush.fyi', '_blank')}>
+              🏠 MY HOMEPAGE 🏠
+            </button>
+            <button className="webmaster-btn" onClick={() => window.open('https://aayush.fyi', '_blank')}>
+              📧 CONTACT WEBMASTER 📧
+            </button>
+          </div>
         </header>
 
         <nav className="filter-nav">
@@ -209,6 +217,7 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
           padding: 20px;
           background: linear-gradient(45deg, #fce2e0, #fff);
           box-shadow: 5px 5px 0px #F98585;
+          position: relative;
         }
 
         .main-title {
@@ -280,6 +289,45 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
           color: #F98585;
           transform: translate(2px, 2px);
           box-shadow: 1px 1px 0px #F98585;
+        }
+
+        .90s-buttons {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          z-index: 10;
+        }
+
+        .homepage-btn, .webmaster-btn {
+          background: #F98585;
+          color: white;
+          border: 3px solid #2c3e50;
+          padding: 12px 20px;
+          font-family: 'Comic Sans MS', cursive, sans-serif;
+          font-size: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+          border-radius: 0;
+          box-shadow: 4px 4px 0px #2c3e50;
+          text-shadow: 2px 2px 0px #2c3e50;
+          position: relative;
+          transition: all 0.2s ease;
+          animation: blink 2s infinite;
+        }
+
+        .homepage-btn:hover, .webmaster-btn:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: 6px 6px 0px #2c3e50;
+          background: #2c3e50;
+          color: #F98585;
+        }
+
+        .homepage-btn:active, .webmaster-btn:active {
+          transform: translate(2px, 2px);
+          box-shadow: 2px 2px 0px #2c3e50;
         }
 
         .reviews-container {
@@ -405,6 +453,14 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
         @media (max-width: 768px) {
           .main-title {
             font-size: 1.8rem;
+          }
+          
+          .90s-buttons {
+            position: static;
+            margin-top: 20px;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
           }
           
           .filter-nav {
