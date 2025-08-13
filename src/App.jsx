@@ -128,9 +128,6 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
             <button className="homepage-btn" onClick={() => window.open('https://aayush.fyi', '_blank')}>
               🏠 MY HOMEPAGE 🏠
             </button>
-            <button className="webmaster-btn" onClick={() => window.open('https://aayush.fyi', '_blank')}>
-              📧 CONTACT WEBMASTER 📧
-            </button>
           </div>
         </header>
 
@@ -183,7 +180,9 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
 
           <footer className="footer">
             <div className="footer-content">
-              <p>Bad Robots</p>
+            <button className="webmaster-btn" onClick={() => window.open('https://aayush.fyi', '_blank')}>
+              📧 CONTACT WEBMASTER 📧
+            </button>
               <div className="visitor-counter">
                 <img src="data:image/gif;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw==" alt="counter" />
 
