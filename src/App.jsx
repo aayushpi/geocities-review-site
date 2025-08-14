@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // Simple markdown parser for reviews
 const parseReviews = (markdown) => {
@@ -60,6 +61,10 @@ const parseReviews = (markdown) => {
 const App = () => {
   const [reviews, setReviews] = useState([]);
   const [selectedType, setSelectedType] = useState('all');
+  const [selectedReview, setSelectedReview] = useState(null);
+  const [showLightbox, setShowLightbox] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch the markdown file
@@ -101,6 +106,36 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
   const filteredReviews = selectedType === 'all' 
     ? reviews 
     : reviews.filter(review => review.type.toLowerCase() === selectedType.toLowerCase());
+
+  // Handle review selection and URL updates
+  const handleReviewClick = (review) => {
+    setSelectedReview(review);
+    setShowLightbox(true);
+    const reviewSlug = review.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    navigate(`/review/${reviewSlug}`, { replace: true });
+  };
+
+  const closeLightbox = () => {
+    setShowLightbox(false);
+    setSelectedReview(null);
+    navigate('/', { replace: true });
+  };
+
+  // Check URL for review parameter on load
+  useEffect(() => {
+    const pathParts = location.pathname.split('/');
+    if (pathParts[1] === 'review' && pathParts[2]) {
+      const reviewSlug = pathParts[2];
+      const foundReview = reviews.find(review => {
+        const slug = review.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        return slug === reviewSlug;
+      });
+      if (foundReview) {
+        setSelectedReview(foundReview);
+        setShowLightbox(true);
+      }
+    }
+  }, [location.pathname, reviews]);
 
   return (
     <div className="app">
@@ -166,11 +201,12 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
 
         <main className="reviews-container">
           {filteredReviews.map((review, index) => (
-            <div key={index} className={`review-card ${review.hot ? 'hot' : ''}`}>
+            <div 
+              key={index} 
+              className={`review-card ${review.hot ? 'hot' : ''} clickable`}
+              onClick={() => handleReviewClick(review)}
+            >
               <h2 className="review-title">{review.title}</h2>
-              <div className="review-type">
-                📂 Category: <span className="highlight">{review.type}</span>
-              </div>
               <p className="review-text">
                 {review.text}
               </p>
@@ -190,6 +226,51 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
             </div>
           </footer>
       </div>
+
+      {/* 90s Style Lightbox */}
+      {showLightbox && selectedReview && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <div className="lightbox-header">
+              <h2 className="lightbox-title">🌟 {selectedReview.title} 🌟</h2>
+              <button className="lightbox-close" onClick={closeLightbox}>
+                ✖ CLOSE ✖
+              </button>
+            </div>
+            <div className="lightbox-body">
+              <div className="lightbox-meta">
+                <div className="lightbox-type">
+                  <span className="highlight">{selectedReview.type}</span>
+                </div>
+                {selectedReview.hot && (
+                  <div className="lightbox-hot">🔥 HOT! 🔥</div>
+                )}
+              </div>
+              <div className="lightbox-text">
+                {selectedReview.text}
+              </div>
+              <div className="lightbox-share">
+                <p>🔗 Share this review:</p>
+                <input 
+                  type="text" 
+                  value={`${window.location.origin}/review/${selectedReview.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`}
+                  readOnly 
+                  className="share-url"
+                />
+                <button 
+                  className="copy-btn"
+                  onClick={() => {
+                    navigator.clipboard.writeText(`${window.location.origin}/review/${selectedReview.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`);
+                    alert('URL copied to clipboard! 📋');
+                  }}
+                >
+                  📋 COPY LINK 📋
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style>{`
         .app {
@@ -342,6 +423,26 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
           padding: 20px;
           box-shadow: 5px 5px 0px #2c3e50;
           position: relative;
+          transition: all 0.2s ease;
+        }
+
+        .review-card.clickable {
+          cursor: pointer;
+        }
+
+        .review-card.clickable:hover {
+          transform: translate(-3px, -3px);
+          box-shadow: 8px 8px 0px #2c3e50;
+          border-color: #2c3e50;
+        }
+
+        .review-link-hint {
+          text-align: center;
+          margin-top: 15px;
+          font-size: 0.9rem;
+          color: #F98585;
+          font-weight: bold;
+          animation: blink 2s infinite;
         }
 
         .review-card.hot::before {
@@ -469,6 +570,167 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
           
           .reviews-container {
             grid-template-columns: 1fr;
+          }
+        }
+
+        /* 90s Style Lightbox */
+        .lightbox-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          backdrop-filter: blur(5px);
+          z-index: 1000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .lightbox-content {
+          background: #fce2e0;
+          border: 5px solid #F98585;
+          box-shadow: 
+            0 0 0 5px #2c3e50,
+            0 0 0 10px #F98585,
+            0 15px 0 0 #2c3e50,
+            0 15px 0 5px #F98585,
+            0 15px 0 10px #F98585;
+          max-width: 90%;
+          max-height: 90%;
+          overflow-y: auto;
+          position: relative;
+          animation: slideIn 0.3s ease-out;
+        }
+
+        .lightbox-header {
+          background: #F98585;
+          color: white;
+          padding: 15px 20px;
+          border-bottom: 3px solid #2c3e50;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .lightbox-title {
+          margin: 0;
+          font-size: 1.5rem;
+          text-shadow: 2px 2px 0px #2c3e50;
+        }
+
+        .lightbox-close {
+          background: #2c3e50;
+          color: #F98585;
+          border: 2px solid #F98585;
+          padding: 8px 15px;
+          font-family: 'Comic Sans MS', cursive, sans-serif;
+          font-weight: bold;
+          cursor: pointer;
+          box-shadow: 3px 3px 0px #F98585;
+          transition: all 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: 5px 5px 0px #F98585;
+        }
+
+        .lightbox-body {
+          padding: 20px;
+        }
+
+        .lightbox-meta {
+          margin-bottom: 20px;
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+
+        .lightbox-type {
+          background: #F98585;
+          color: white;
+          padding: 8px 15px;
+          border: 2px solid #2c3e50;
+          font-weight: bold;
+        }
+
+        .lightbox-hot {
+          background: #2c3e50;
+          color: #F98585;
+          padding: 8px 15px;
+          border: 2px solid #F98585;
+          font-weight: bold;
+          animation: blink 1s infinite;
+        }
+
+        .lightbox-text {
+          line-height: 1.8;
+          font-size: 1.1rem;
+          margin-bottom: 30px;
+          background: white;
+          padding: 20px;
+          border: 3px solid #F98585;
+          box-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        .lightbox-share {
+          background: #2c3e50;
+          color: #fce2e0;
+          padding: 20px;
+          border: 3px solid #F98585;
+        }
+
+        .lightbox-share p {
+          margin: 0 0 15px 0;
+          font-weight: bold;
+          font-size: 1.1rem;
+        }
+
+        .share-url {
+          width: 100%;
+          padding: 10px;
+          border: 2px solid #F98585;
+          background: white;
+          color: #2c3e50;
+          font-family: monospace;
+          margin-bottom: 15px;
+          box-sizing: border-box;
+        }
+
+        .copy-btn {
+          background: #F98585;
+          color: white;
+          border: 2px solid #2c3e50;
+          padding: 10px 20px;
+          font-family: 'Comic Sans MS', cursive, sans-serif;
+          font-weight: bold;
+          cursor: pointer;
+          box-shadow: 3px 3px 0px #2c3e50;
+          transition: all 0.2s ease;
+          width: 100%;
+        }
+
+        .copy-btn:hover {
+          transform: translate(-2px, -2px);
+          box-shadow: 5px 5px 0px #2c3e50;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+          from { 
+            transform: scale(0.8) translateY(-50px);
+            opacity: 0;
+          }
+          to { 
+            transform: scale(1) translateY(0);
+            opacity: 1;
           }
         }
       `}</style>
