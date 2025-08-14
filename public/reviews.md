@@ -1,3 +1,15 @@
+### Martyr!
+**Type:** Book  
+**Hot:** true
+
+I found Kaveh Akbar's book to be a timely read last year, it's even more important now. Knowing your roots, your people, and yourself is a struggle and his depiction of Cyrus' journey through it moved me. One of the better books of my lifetime.
+
+### The Seep
+**Type:** Book  
+**Hot:** true
+
+Chana Porter's novella is a beautiful reflection on memory, form, permanance, and loss. "Tips for Attending a Dinner Party When Your World Has Ended and Another World Is Just Beginning" also might be one of the most heart warming openings to a book I've read in a while. When I think about this book, I think about the great losses in my life -- my dogs, close ones -- and remember that my memory isn't just their passing but all the moments that led up to it.
+
 ### Weapons
 **Type:** Film  
 **Hot:** true
