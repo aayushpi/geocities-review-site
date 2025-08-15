@@ -35,8 +35,28 @@ Andor is a television rarity: It's determined, confident, and focused in a spraw
 **Type:** Game  
 **Hot:** true
 
+### The Substance
+**Type:** Film
+
+The body horror was the male gaze all along.
+
+### Monkey Man
+**Type:** Film
+**Hot:** true
+
+Monkey Man expertly blended mythology, fascism, gender, and class struggle and deserved a lot more flowers. Zakir Hussain's cameo in the second act is perfect, a nod to classic Bollywood. Dev Patel in this (as in the Green Knight a few years ago) shines as an actor.
+
+### The Curse
+**Type:** TV
+**Hot:** true
+
+While the streaming era has been truly terrible for television, The Curse wouldn't exist without it. A consistent background hum of discomfort highlights this part-parody, part-reflection of HGTV-esque reality, with scattershot yet brilliant critiques of gentrification, white savior complex, the camera gaze, and so much more.
+
+
 ### Saga
 **Type:** Book
 **Hot:** true
+
+
 
 A lavish Sci-Fi world with truly alien stages and extremely relatable characters. Read this to feel something.
