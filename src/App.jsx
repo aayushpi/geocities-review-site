@@ -276,7 +276,7 @@ William Gibson is a genius! This cyberpunk masterpiece predicted the internet be
         .app {
           background-color: #fce2e0;
           min-height: 100vh;
-          font-family: 'Comic Sans MS', cursive, sans-serif;
+          font-family: 'Comic Sans MS', sans-serif;
           color: #2c3e50;
           background-image: 
             radial-gradient(circle at 20% 50%, rgba(249, 133, 133, 0.1) 0%, transparent 50%),
