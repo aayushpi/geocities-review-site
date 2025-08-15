@@ -4,18 +4,15 @@
   "description": "A 90s-style review site built with React",
   "main": "index.jsx",
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject",
-    "lint": "eslint src/ --ext .js,.jsx",
-    "lint:fix": "eslint src/ --ext .js,.jsx --fix"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
+    "next": "^15.4.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^7.8.0",
-    "react-scripts": "^5.0.1"
+    "react-dom": "^18.2.0"
   },
   "browserslist": {
     "production": [
@@ -30,9 +27,7 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^7.1.0",
     "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-config-next": "^15.4.6"
   }
 }
