@@ -1,3 +1,8 @@
+### Rogue One
+**Type:** Film  
+
+Watching Rogue One after Andor, without having seen any of the other Star Wars films might not be the primary persona of this film. But it did provide a fitting, meaningful end to a beloved character and maintaned a tension that I felt through most of the show preceeding it. Enjoyable, even if not at the breathless heights of its prequel.
+
 ### Martyr!
 **Type:** Book  
 **Hot:** true
